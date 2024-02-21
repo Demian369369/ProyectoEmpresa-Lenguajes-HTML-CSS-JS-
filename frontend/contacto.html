@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Redes_Sociales_La~Snackeria~</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="imagenempresa.png" type="image/png">
+</head>
+<body>
+    <header>
+        <img src="imagenempresa.png"></img>
+        <h1 class="animated-title">La~Snackeria~</h1>
+        <p class="animated-slogan">"Rompiendo dietas, no antojos."</p>
+        <h2>Redes Sociales</h2>
+    <div>
+        <img src="whatsapp.png" alt="WhatsApp" class="social-icon">
+        <p>Demian CEO: +52 3315333030</p><br>
+        <p>Alisson CEO: +52 19611098587</p><br>
+        <p>Adrian CEO: +52 33 2541 9420</p><br>
+        <p>Telefono Empresa: +52 3312333030</p><br>
+
+        
+    </header>
+    <nav>
+        <a href="index.html"><button class="nav-btn"> Inicio </button></a>
+        <a href="menu.html"><button class="nav-btn"> Productos y menu </button> </a>
+        <a href="historia.html"><button class="nav-btn"> Nuestro estudio de empresa </button></a>
+        <a href="pensamiento_economico.html"><button class="nav-btn">Vision Mision y Valores</button></a>
+        <a href="massnackeria.html"><button class="nav-btn"> Mas sobre la Snackeria </button></a>
+    </nav>
+
+    <footer>
+        <p>Todos los derechos reservados &copy; 2023 La~Snackeria~</p>
+    </footer>
+
+    <div class="overlay" onclick="closeContent()"></div>
+    <div class="popup">
+        <button class="close-btn" onclick="closeContent()">&times;</button>
+        <h2 id="popup-title"></h2>
+        <p id="popup-content"></p>
+    </div>
+    <script src="view.js"></script>
+</body>
+</html>
