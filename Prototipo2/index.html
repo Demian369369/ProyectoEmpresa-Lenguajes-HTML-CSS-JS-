@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>La ~Snackeria~</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="imagenempresa.png" type="image/png">
+</head>
+<body>
+    <header>
+        <img src="imagenempresa.png" alt="Logo de La Snackeria">
+        <h1 class="animated-title">La~Snackeria~</h1>
+        <p class="animated-slogan">"Rompiendo dietas, no antojos."</p>
+        <p class="animated-slogan">
+        En la Snackeria nos enfocamos en la venta de Snacks y productos para esos momentos de antojo como frituras, bebidas refrescantes y dulces.<br>
+        Nuestro objetivo como empresa es brindar servicios de calidad hacia nuestros clientes y dejarlos con un buen sabor de boca y una satisfaccion de servicio, buscamos lo mejor para nuestros clientes, empleados y nuestro medio ambiente.
+    </header>
+    <nav>
+        <a href="menu.html"><button class="nav-btn">Productos y menú</button></a>
+        <a href="contacto.html"><button class="nav-btn">Contáctanos</button></a>
+    </nav>
+    <footer>
+        <p>Todos los derechos reservados &copy; 2023 La~Snackeria~</p>
+    </footer>
+    <div class="overlay" onclick="closeContent()"></div>
+    <div class="popup">
+        <button class="close-btn" onclick="closeContent()">&times;</button>
+        <h2 id="popup-title"></h2>
+        <p id="popup-content"></p>
+    </div>
+    <script src="view.js"></script>
+</body>
+</html>

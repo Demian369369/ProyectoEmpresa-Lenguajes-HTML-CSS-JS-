@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="logo.jpeg" type="image/png">
+  <link href="https://unpkg.com/boxicons@2.0.8/css/boxicons.min.css" rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css">
+  <title>LibreriaDelCafe - Productos</title>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="nav">
+    <div class="wrapper container">
+      <div class="logo">
+        <a href="/">Libreria del Cafe</a>
+      </div>
+      <ul class="nav-list">
+        <div class="top">
+          <label for="" class="btn close-btn"><i class='bx bx-x'></i></label>
+        </div>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="products.html">Productos</a></li>
+        <li><a href="">Blog</a></li>
+        <li><a href="">Ventas</a></li>
+        <li><a href="">Pagina</a></li>
+        <li class="icons">
+          <a href="cart.html">
+            <span>
+              <i class='bx bx-cart'></i>
+              <small class="count d-flex">0</small>
+            </span>
+          </a>
+          <span>
+            <i class='bx bx-search'></i>
+          </span>
+        </li>
+      </ul>
+      <label for="" class="btn open-btn"><i class='bx bx-menu'></i></label>
+    </div>
+  </nav>
+
+  <!-- Products Section -->
+  <div class="products container">
+    <h1>Nuestros Productos</h1>
+    <button class="menu-toggle">Mostrar Menu</button>
+    <div class="menu" id="menu">
+      <ul class="menu-list">
+        <li data-image="espresso.jpg">Espresso - $23</li>
+        <li data-image="latte.jpg">Latte - $45</li>
+        <li data-image="cappuccino.jpg">Cappuccino - $37</li>
+        <li data-image="americano.jpg">Americano - $29</li>
+        <li data-image="mocha.jpg">Mocha - $52</li>
+        <li data-image="macchiato.jpg">Macchiato - $31</li>
+        <li data-image="flat_white.jpg">Flat White - $47</li>
+        <li data-image="irish_coffee.jpg">Irish Coffee - $68</li>
+        <li data-image="affogato.jpg">Affogato - $41</li>
+        <li data-image="frappe.jpg">Frappé - $35</li>
+      </ul>
+      <div class="product-image">
+        <img id="productImage" src="" alt="Imagen del café">
+      </div>
+    </div>
+  </div>
+  <script src="index.js"></script>
+  <script src="products.js"></script>
+</body>
+</html>
+
