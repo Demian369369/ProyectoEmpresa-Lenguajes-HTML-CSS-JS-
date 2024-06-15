@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Menu de Mariscos y Aguachile</title>
+    <style>
+ body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    background-image: url('Fondo.jpeg'); /* Asegúrate de que la ruta sea correcta */
+    background-size: cover; /* Ajusta la imagen para cubrir toda la pantalla */
+    background-position: center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Hace que la imagen permanezca fija al hacer scroll */
+    color: #fff;
+}
+
+
+        header {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        nav button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s;
+        }
+        nav button:hover {
+            background-color: #0056b3;
+        }
+        .menu-section {
+            display: none;
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.7);
+            margin: 0 10%;
+            border-radius: 10px;
+        }
+        .menu-section.active {
+            display: block;
+        }
+        .menu-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        .menu-item img {
+            max-width: 100px;
+            border-radius: 10px;
+        }
+        .menu-item .name {
+            font-size: 1.5em;
+            color: #ffcc00;
+        }
+        .menu-item .price {
+            font-size: 1.2em;
+            color: #00ffcc;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+        .language-switch {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+        }
+        .language-switch button {
+            padding: 10px;
+            background-color: #28a745;
+            border: none;
+            color: white;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s;
+        }
+        .language-switch button:hover {
+            background-color: #218838;
+        }
+        @media (max-width: 600px) {
+            nav {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .menu-section {
+                margin: 0 5%;
+            }
+        }
+    </style>
+    <script>
+        const menuItems = {
+            desayuno: [
+                { es: "Ceviche de Camarón", en: "Shrimp Ceviche", price: "$40.00", img: "Ceviche.jpg" },
+                { es: "Tostada de Atún", en: "Tuna Tostada", price: "$40.00", img: "tostada.jpg" },
+                { es: "Coctel de Pulpo", en: "Octopus Cocktail", price: "$40.00", img: "CoctelPulpo.jpg" },
+                { es: "Camarones a la Diabla", en: "Deviled Shrimp", price: "$40.00", img: "Camaron.jpg" },
+                { es: "Aguachile Verde", en: "Green Aguachile", price: "$40.50", img: "Aguachile.jpg" },
+                { es: "Taco Gobernador", en: "Governor's Taco", price: "$40.50", img: "TacoGob.jpg" },
+                { es: "Burrito de Mariscos", en: "Seafood Burrito", price: "$40.00", img: "BurritoMariscos.jpg" },
+                { es: "Chilaquiles de Mariscos", en: "Seafood Chilaquiles", price: "$40.50", img: "ChilaquilesMariscos.jpg" },
+                { es: "Ensalada de Mariscos", en: "Seafood Salad", price: "$40.50", img: "Ensaladamariscos.jpg" },
+                { es: "Omelette de Mariscos", en: "Seafood Omelette", price: "$48.00", img: "Omelette.jpg" },
+            ],
+            comida: [
+                { es: "Filete de Pescado Empanizado", en: "Breaded Fish Fillet", price: "$42.00", img: "filete.jpg" },
+                { es: "Camarones al Mojo de Ajo", en: "Garlic Shrimp", price: "$43.00", img: "mojo.jpg" },
+                { es: "Paella de Mariscos", en: "Seafood Paella", price: "$45.00", img: "paella.jpg" },
+                { es: "Langosta a la Parrilla", en: "Grilled Lobster", price: "$40.00", img: "langosta.jpg" },
+                { es: "Pulpo a la Gallega", en: "Galician Octopus", price: "$44.00", img: "pulpo.jpg" },
+                { es: "Tacos de Pescado", en: "Fish Tacos", price: "$40.00", img: "tacos.jpg" },
+                { es: "Camarones Empanizados", en: "Breaded Shrimp", price: "$41.00", img: "empanizados.jpg" },
+                { es: "Salmon a la Plancha", en: "Grilled Salmon", price: "$44.50", img: "salmon.jpg" },
+                { es: "Pasta con Mariscos", en: "Seafood Pasta", price: "$43.50", img: "pasta.jpg" },
+                { es: "Arroz con Mariscos", en: "Seafood Rice", price: "$42.50", img: "arroz.jpg" },
+            ],
+            postres: [
+                { es: "Flan de Coco", en: "Coconut Flan", price: "$5.00", img: "flan.jpg" },
+                { es: "Helado de Mango", en: "Mango Ice Cream", price: "$4.00", img: "helado.jpg" },
+                { es: "Pastel Tres Leches", en: "Three Milk Cake", price: "$6.00", img: "pastel.jpg" },
+                { es: "Tarta de Limón", en: "Lemon Pie", price: "$5.50", img: "tarta.jpg" },
+                { es: "Buñuelos de Viento", en: "Wind Fritters", price: "$3.50", img: "bunuelos.jpg" },
+                { es: "Gelatina de Maracuyá", en: "Passion Fruit Jelly", price: "$4.50", img: "gelatina.jpg" },
+                { es: "Crepas de Mariscos", en: "Seafood Crepes", price: "$7.00", img: "crepas.jpg" },
+                { es: "Churros con Chocolate", en: "Churros with Chocolate", price: "$5.00", img: "churros.jpg" },
+                { es: "Brownie de Mariscos", en: "Seafood Brownie", price: "$6.00", img: "brownies.jpg" },
+                { es: "Quesadilla de Queso", en: "Cheese Quesadilla", price: "$4.00", img: "quesadilla.jpg" },
+            ],
+            bebidas: [
+                { es: "Mojito de Maracuyá", en: "Passion Fruit Mojito", price: "$56.00", img: "mojito.jpg" },
+                { es: "Piña Colada", en: "Pina Colada", price: "$27.00", img: "pinacolada.jpg" },
+                { es: "Cerveza Artesanal", en: "Craft Beer", price: "$35.00", img: "cervesa.jpg" },
+                { es: "Agua de Horchata", en: "Horchata Water", price: "$32.50", img: "horchata.jpg" },
+                { es: "Jugo de Naranja", en: "Orange Juice", price: "$33.00", img: "jugo.jpg" },
+                { es: "Vino Blanco", en: "White Wine", price: "$38.00", img: "vinob.jpg" },
+                { es: "Vino Tinto", en: "Red Wine", price: "$38.00", img: "vino.jpg" },
+                { es: "Margarita", en: "Margarita", price: "$37.50", img: "margarita.jpg" },
+                { es: "Té Helado", en: "Iced Tea", price: "$32.50", img: "te.jpg" }
+                ]
+        };
+
+        function switchLanguage(lang) {
+            const sections = document.querySelectorAll('.menu-section');
+            sections.forEach(section => {
+                section.querySelectorAll('.menu-item').forEach((item, index) => {
+                    const itemName = menuItems[section.id][index][lang];
+                    item.querySelector('.name').textContent = itemName;
+                });
+            });
+        }
+
+        function showSection(sectionId) {
+            const sections = document.querySelectorAll('.menu-section');
+            sections.forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('.menu-section');
+            sections.forEach(section => {
+                menuItems[section.id].forEach(item => {
+                    const div = document.createElement('div');
+                    div.className = 'menu-item';
+                    div.innerHTML = `
+                        <img src="${item.img}" alt="${item.es}">
+                        <span class="name">${item.es}</span>
+                        <span class="price">${item.price}</span>
+                    `;
+                    section.querySelector('.menu-items').appendChild(div);
+                });
+            });
+            showSection('desayuno');
+        });
+    </script>
+</head>
+<body>
+    <header>
+        <h1>Menu de Mariscos y Aguachile</h1>
+    </header>
+    <div class="language-switch">
+        <button onclick="switchLanguage('es')">ES</button>
+        <button onclick="switchLanguage('en')">EN</button>
+    </div>
+    <nav>
+        <button onclick="showSection('desayuno')">Desayuno</button>
+        <button onclick="showSection('comida')">Comida</button>
+        <button onclick="showSection('postres')">Postres</button>
+        <button onclick="showSection('bebidas')">Bebidas</button>
+    </nav>
+    <div id="desayuno" class="menu-section">
+        <h2>Desayuno</h2>
+        <div class="menu-items"></div>
+    </div>
+    <div id="comida" class="menu-section">
+        <h2>Comida</h2>
+        <div class="menu-items"></div>
+    </div>
+    <div id="postres" class="menu-section">
+        <h2>Postres</h2>
+        <div class="menu-items"></div>
+    </div>
+    <div id="bebidas" class="menu-section">
+        <h2>Bebidas</h2>
+        <div class="menu-items"></div>
+    </div>
+    <footer>
+        <p>&copy; 2024 Menu de Mariscos y Aguachile</p>
+    </footer>
+</body>
+</html>
+
+
